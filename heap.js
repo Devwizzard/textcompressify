@@ -1,14 +1,14 @@
-export { BinaryHeap }
+export { BinaryHeap }//will be received by huffman.js
 
 class BinaryHeap {
 
     constructor() {
-        this.heap = [];
+        this.heap = []; //array
     }
 
-    insert(value) {
-        this.heap.push(value);
-        this.bubbleUp();
+    insert(value) {//function to insert values in heap array
+        this.heap.push(value);//pushed value in heap array
+        this.bubbleUp();//called function heapify to manage heap(max node as parent)
     }
 
     size() {
@@ -19,8 +19,8 @@ class BinaryHeap {
         return ( this.size()===0 );
     }
 
-    
-    bubbleUp() {
+    //using iterative approach
+    bubbleUp() {//heapify
         let index = this.size() - 1;
 
         while (index > 0) {
@@ -36,7 +36,7 @@ class BinaryHeap {
     }
 
     extractMax() {
-        const max = this.heap[0];
+        const max = this.heap[0];//root node
         const tmp = this.heap.pop();
         if(!this.empty()) {
             this.heap[0] = tmp;
@@ -52,6 +52,7 @@ class BinaryHeap {
             largest = index;
         const length = this.size();
 
+        // console.log(this.heap[left], left, length, this.heap[right], right, length, this.heap[largest]);
 
         if (left < length && this.heap[left][0] > this.heap[largest][0]) {
             largest = left
@@ -59,7 +60,7 @@ class BinaryHeap {
         if (right < length && this.heap[right][0] > this.heap[largest][0]) {
             largest = right
         }
-  
+        // swap
         if (largest !== index) {
             let tmp = this.heap[largest];
             this.heap[largest] = this.heap[index];
